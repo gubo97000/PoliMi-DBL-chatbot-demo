@@ -26,7 +26,7 @@ function ChatBubbleComponent({ msg }) {
 
 export default function Home() {
   const [chatHistory, setChatHistory] = useState([
-    { sender: "Rob", message: "Ciao Paolo! Come è andata oggi?" },
+    { sender: "Rob", message: "Ciao Mariano! Come è andata oggi?" },
     // { sender: "Paolo", message: "Ciao Rob bene, ma è stata un po' stressante la giornata" },
     // { sender: "Rob", message: "Hai lavorato molto oggi, hai avuto 4 riuinioni su teams!" },
   ]);
@@ -42,10 +42,10 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ chatHistory: [...chatHistory, { sender: "Paolo", message: input }] }), //State change is async only doable like this
+      body: JSON.stringify({ chatHistory: [...chatHistory, { sender: "Mariano", message: input }] }), //State change is async only doable like this
     });
 
-    setChatHistory(hist => [...hist, { sender: "Paolo", message: input }]);
+    setChatHistory(hist => [...hist, { sender: "Mariano", message: input }]);
     setInput('');
 
     const response = await fetchPromise;

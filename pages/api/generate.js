@@ -7,7 +7,8 @@ const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
   console.log(generatePrompt(req.body.chatHistory))
-  const completion = await openai.createCompletion("text-davinci-002", {
+  const completion = await openai.createCompletion( {
+    model: "text-davinci-002",
     prompt: generatePrompt(req.body.chatHistory),
     temperature: 0.7,
     max_tokens: 500,
@@ -21,7 +22,7 @@ export default async function (req, res) {
 
 function generatePrompt(hist) {
   const preamble = `Questa è una conversazione con Rob l'assistente virtuale di Mediolanum, una banca in Italia, la sua funzione principale è aiutare i dipendenti della banca a migliorare il loro wellbeing, suggerendo utili consigli sia lato fisico, sia mentale. I dipendenti possono lavorare o nel campus di Basiglio quindi partecipare agli eventi di quel giorno o lavorare in remoto.`
-  const info = `Impiegato Paolo:
+  const info = `Impiegato Mariano:
 Attività Odierne{Lavoro in remoto, 5 riunioni online, 4000 passi, 1 ora di postura scorretta}
 Attività di domani{Lavoro in campus, 3 riunioni online, 5 di presenza}
 
